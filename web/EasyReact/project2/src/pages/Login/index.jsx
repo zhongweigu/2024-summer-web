@@ -1,5 +1,6 @@
 
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
+
 
 export default function Index() {
 
@@ -7,6 +8,7 @@ export default function Index() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
 
@@ -22,6 +24,16 @@ export default function Index() {
 
     };
 
+    /*useEffect(() => {
+        // 组件加载时检查本地存储
+        const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
+        if (storedIsLoggedIn === 'true') {
+            setIsLoggedIn(true);
+            // 可以选择重定向到主页或其他页面
+            window.location.href = '/home';
+        }
+    }, []);*/
+
     // 处理表单提交
     const handleSubmit = (event) => {
         event.preventDefault(); // 阻止表单默认提交行为
@@ -31,6 +43,7 @@ export default function Index() {
         if (registeredUsers[email] && registeredUsers[email] === password) {
             // 如果账号密码正确，存储登录状态
             localStorage.setItem('isLoggedIn', 'true');
+            setIsLoggedIn(true);
             // 跳转到主页
             window.location.href = '/home';
         } else {

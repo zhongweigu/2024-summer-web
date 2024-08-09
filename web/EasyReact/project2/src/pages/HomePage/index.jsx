@@ -1,14 +1,14 @@
-import Header from "./Header_LoggedIn.jsx";
+import Header from "../../components/Header.jsx";
 import Card from "../../components/Card.jsx";
 
-const layout = () => {
+const HomePage = () => {
 
     return (
         <>
+
             <Header/>
-            <Card/>
         </>
     )
 }
 
-export default layout
+export default HomePage;
