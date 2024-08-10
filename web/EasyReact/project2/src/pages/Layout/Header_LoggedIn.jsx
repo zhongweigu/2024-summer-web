@@ -1,16 +1,10 @@
 'use client'
 
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import {
     Dialog,
     DialogPanel,
-    Disclosure,
-    DisclosureButton,
-    DisclosurePanel,
-    Popover,
-    PopoverButton,
     PopoverGroup,
-    PopoverPanel,
 } from '@headlessui/react'
 import {
     ArrowPathIcon,
@@ -21,7 +15,7 @@ import {
     SquaresPlusIcon,
     XMarkIcon,
 } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
+import {PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 
 const products = [
     { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
@@ -43,11 +37,8 @@ export default function Header() {
         <header className="bg-white">
             <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
                 <div className="flex lg:flex-1">
-                    <a href="#" className="-m-1.5 p-1.5">
-                        <span className="sr-only">Your Company</span>
-                        <img alt="" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                             className="h-8 w-auto"/>
-                    </a>
+                    <img alt="" src="../../../public/Logo.bmp"
+                         className="h-12 w-12"/>
                 </div>
                 <div className="flex lg:hidden">
                     <button
@@ -62,12 +53,6 @@ export default function Header() {
                 <PopoverGroup className="hidden lg:flex lg:gap-x-12">
 
                     <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-                        Products
-                    </a>
-                    <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-                        Features
-                    </a>
-                    <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
                         Marketplace
                     </a>
                     <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
@@ -75,10 +60,27 @@ export default function Header() {
                     </a>
                 </PopoverGroup>
                 <a href="#" className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <span className="sr-only">Your Company</span>
-                    <img alt="" src="src/assets/react.svg"
-                         className="h-8 w-8"/>
+                    <div className="avatar">
+                        <div className="w-20 rounded-full">
+                            <img
+                                alt="Avatar"
+                                src="../../../public/OIP-C.jpg"
+                                className="bg-auto rounded-full w-12 h-12"
+                            />
+                        </div>
+                    </div>
                 </a>
+                <button
+                    type="button"
+                    className="inline-flex items-center rounded-md bg-pink-200 px-3 py-2 text-sm font-semibold text-pink-400 shadow-sm ring-1 ring-inset ring-pink-300 hover:bg-pink-50"
+                >
+                    <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                        <a href="/login" className="text-sm font-semibold leading-6 text-gray-900">
+                            登出
+                        </a>
+                    </div>
+                </button>
+
             </nav>
             <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
                 <div className="fixed inset-0 z-10"/>

@@ -23,17 +23,6 @@ export default function Index() {
         setPassword(event.target.value);
 
     };
-
-    /*useEffect(() => {
-        // 组件加载时检查本地存储
-        const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
-        if (storedIsLoggedIn === 'true') {
-            setIsLoggedIn(true);
-            // 可以选择重定向到主页或其他页面
-            window.location.href = '/home';
-        }
-    }, []);*/
-
     // 处理表单提交
     const handleSubmit = (event) => {
         event.preventDefault(); // 阻止表单默认提交行为
@@ -59,8 +48,8 @@ export default function Index() {
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <img
                         alt="Your Company"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                        className="mx-auto h-10 w-auto"
+                        src="../../../public/Logo.bmp"
+                        className="mx-auto h-13 w-1/5"
                     />
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                         登录进入社区
