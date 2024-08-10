@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useAuth} from "../../utils/index.jsx";
 
 export default function RegisterPage() {
     // 设置状态变量来存储邮箱和密码
@@ -7,6 +8,9 @@ export default function RegisterPage() {
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [nickname, setNickname] = useState(''); // 新增状态变量存储昵称
+
+    const { login } = useAuth();
 
     // 处理邮箱输入的变化
     const handleEmailChange = (event) => {
@@ -24,11 +28,11 @@ export default function RegisterPage() {
     };
 
     // 处理注册提交
-    const handleRegisterSubmit = (event) => {
+    const HandleRegisterSubmit = (event) => {
         event.preventDefault();
 
         // 检查邮箱是否已经注册
-        const registeredUsers = JSON.parse(localStorage.getItem('users') || '{}');
+        let registeredUsers = JSON.parse(localStorage.getItem('users') || '{}');
         if (registeredUsers[email]) {
             setError('该邮箱已注册');
             return;
@@ -40,9 +44,22 @@ export default function RegisterPage() {
             return;
         }
 
-        // 保存新用户信息
-        registeredUsers[email] = password;
+        const uid = Math.random().toString(36).substring(2, 15);
+
+        const newUser = {
+            uid,
+            password,
+            nickname,
+            avatar: '../../../public/defaultAvatar.jpg' // 假设这是默认头像的路径
+        };
+        localStorage.setItem(email, JSON.stringify(newUser)); // 保存单个用户信息
+        // 更新已注册用户列表
+        registeredUsers = JSON.parse(localStorage.getItem('users') || '{}');
+        registeredUsers[email] = password; // 仍然只保存邮箱和密码的映射关系
         localStorage.setItem('users', JSON.stringify(registeredUsers));
+
+        // 更新context中的状态
+        login(uid, nickname, '../../../public/defaultAvatar.jpg');
 
         // 注册成功后，显示成功消息并跳转到登录页面
         setSuccessMessage('注册成功, 2秒后跳转到登录页面');
@@ -66,7 +83,7 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form onSubmit={handleRegisterSubmit} className="space-y-6">
+                    <form onSubmit={HandleRegisterSubmit} className="space-y-6">
                         {error && <p className="text-red-500 text-center">{error}</p>}
                         {successMessage && <p className="text-green-500 text-center">{successMessage}</p>}
                         <div>
@@ -119,6 +136,23 @@ export default function RegisterPage() {
                                     autoComplete="new-password"
                                     value={confirmPassword}
                                     onChange={handleConfirmPasswordChange}
+                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label htmlFor="nickname" className="block text-sm font-medium leading-6 text-gray-900">
+                                昵称
+                            </label>
+                            <div className="mt-2">
+                                <input
+                                    id="nickname"
+                                    name="nickname"
+                                    type="text"
+                                    required
+                                    value={nickname}
+                                    onChange={(e) => setNickname(e.target.value)}
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                             </div>

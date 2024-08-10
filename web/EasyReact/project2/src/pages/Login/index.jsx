@@ -1,5 +1,6 @@
 
 import React, {useEffect, useState} from 'react';
+import {useAuth} from "../../utils/index.jsx";
 
 
 export default function Index() {
@@ -8,9 +9,9 @@ export default function Index() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
+    const {login} = useAuth();
 
     // 处理邮箱输入的变化
     const handleEmailChange = (event) => {
@@ -30,9 +31,14 @@ export default function Index() {
         // 模拟登录验证过程
         const registeredUsers = JSON.parse(localStorage.getItem('users') || '{}');
         if (registeredUsers[email] && registeredUsers[email] === password) {
-            // 如果账号密码正确，存储登录状态
-            localStorage.setItem('isLoggedIn', 'true');
-            setIsLoggedIn(true);
+            // 假设登录成功后，从localStorage中获取用户信息
+            const userInfo = JSON.parse(localStorage.getItem(email)) || {};
+            console.log(userInfo);
+            const { uid, nickname, avatar } = userInfo;
+            console.log(uid, nickname, avatar);
+            // 更新context中的状态
+            login(uid, nickname, avatar);
+            localStorage.setItem('authState', JSON.stringify({ isLoggedIn: true, uid, nickname, avatar }));
             // 跳转到主页
             window.location.href = '/home';
         } else {

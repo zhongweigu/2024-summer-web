@@ -7,31 +7,18 @@ import {
     PopoverGroup,
 } from '@headlessui/react'
 import {
-    ArrowPathIcon,
     Bars3Icon,
-    ChartPieIcon,
-    CursorArrowRaysIcon,
-    FingerPrintIcon,
-    SquaresPlusIcon,
     XMarkIcon,
 } from '@heroicons/react/24/outline'
-import {PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
+import {useAuth} from "../../utils/index.jsx";
 
-const products = [
-    { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
-    { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-    { name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
-    { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
-    { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
-]
-const callsToAction = [
-    { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
-    { name: 'Contact sales', href: '#', icon: PhoneIcon },
-]
 
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+    const {isLoggedIn, nickname, avatar, uid} = useAuth()
+
+    const {logout} = useAuth()
 
     return (
         <header className="bg-white">
@@ -64,18 +51,20 @@ export default function Header() {
                         <div className="w-20 rounded-full">
                             <img
                                 alt="Avatar"
-                                src="../../../public/OIP-C.jpg"
+                                src={avatar}
                                 className="bg-auto rounded-full w-12 h-12"
                             />
+                            {nickname}({uid})
                         </div>
                     </div>
                 </a>
                 <button
                     type="button"
+                    onClick={()=>{logout()}}
                     className="inline-flex items-center rounded-md bg-pink-200 px-3 py-2 text-sm font-semibold text-pink-400 shadow-sm ring-1 ring-inset ring-pink-300 hover:bg-pink-50"
                 >
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                        <a href="/login" className="text-sm font-semibold leading-6 text-gray-900">
+                        <a href="/" className="text-sm font-semibold leading-6 text-gray-900">
                             登出
                         </a>
                     </div>
