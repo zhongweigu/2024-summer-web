@@ -1,6 +1,7 @@
-import React from 'react';
 
-export default function Card() {
+import PropTypes from 'prop-types';
+
+export default function Card({ title, paragraph, images, avatarSrc }) {
     const cardStyle = {
         width: '100%',
         maxWidth: '1000px', // 限制最大宽度
@@ -12,15 +13,6 @@ export default function Card() {
         padding: '20px',
         boxSizing: 'border-box',
     };
-
-    const cardContainerStyle = {
-        display: 'flex',
-        justifyContent: 'center', // 水平居中
-        alignItems: 'center', // 垂直居中
-        height: '100vh', // 容器高度为视口高度
-        padding: '20px',
-    };
-
     const titleStyle = {
         fontSize: '30px', // 调整标题文字大小
         textAlign: 'left',
@@ -45,16 +37,6 @@ export default function Card() {
         objectFit: 'cover',
     };
 
-    // 假设 images 是一个包含图片URLs的数组
-    const images = [
-        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-        "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-        // ... 更多图片URLs
-    ];
 
     const avatarStyle = {
         width: '50px', // 头像宽度
@@ -65,37 +47,46 @@ export default function Card() {
     };
 
     return (
-        <div style={cardContainerStyle}>
-            <div style={cardStyle} className="card bg-white shadow-xl">
-                <div style={imgContainerStyle}>
-                    {images.map((imageSrc, index) => (
-                        <img
-                            key={index}
-                            src={imageSrc}
-                            alt={`Image ${index}`}
-                            style={imgStyle}
-                        />
-                    ))}
+        <div style={cardStyle} className="card bg-white shadow-xl">
+            <div style={imgContainerStyle}>
+                {images.map((imageSrc, index) => (
+                    <img
+                        key={index}
+                        src={imageSrc}
+                        alt={`Image ${index}`}
+                        style={imgStyle}
+                    />
+                ))}
+            </div>
+
+            <div className="h-8"></div>
+
+            <div className="card-body">
+                <div style={{display: 'flex', alignItems: 'center'}}>
+                    <img
+                        src={avatarSrc}
+                        alt="Avatar"
+                        style={avatarStyle}
+                    />
+                    <h2 style={titleStyle} className="card-title text-pink-400">{title}</h2>
                 </div>
-
-                <div className="h-8"></div>
-
-                <div className="card-body">
-                    <div style={{display: 'flex', alignItems: 'center'}}>
-                        <img
-                            src="https://via.placeholder.com/50" // 示例头像URL
-                            alt="Avatar"
-                            style={avatarStyle}
-                        />
-                        <h2 style={titleStyle} className="card-title text-pink-400">Shoes!</h2>
-                    </div>
-                    <div className="h-4"></div>
-                    <p style={paragraphStyle}>If a dog chews shoes whose shoes does he choose?</p>
-                    <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
-                    </div>
+                <div className="h-4"></div>
+                <p style={paragraphStyle}>{paragraph}</p>
+                <div className="card-actions justify-end">
+                    <button className="btn btn-primary">Buy Now</button>
                 </div>
             </div>
+            <div className="h-8"></div>
+            <svg width="2000" height="200">
+                <line x1="550" y1="10" x2="1450" y2="10" stroke="black" strokeWidth="2"/>
+            </svg>
         </div>
     );
 }
+
+Card.propTypes = {
+    title: PropTypes.string.isRequired,
+    paragraph: PropTypes.string,
+    images: PropTypes.arrayOf(PropTypes.string),
+    avatarSrc: PropTypes.string,
+};
