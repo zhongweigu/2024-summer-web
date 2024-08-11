@@ -1,14 +1,14 @@
 
 import PropTypes from 'prop-types';
 
-export default function Card({ title, paragraph, images, avatarSrc }) {
+export default function Card({uname, title, paragraph, images, avatarSrc }) {
     const cardStyle = {
         width: '100%',
         maxWidth: '1000px', // 限制最大宽度
         margin: '0 auto', // 水平居中
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center', // 垂直居中
+
         justifyContent: 'flex-start', // 从顶部开始排列内容
         padding: '20px',
         boxSizing: 'border-box',
@@ -20,7 +20,7 @@ export default function Card({ title, paragraph, images, avatarSrc }) {
 
     const paragraphStyle = {
         fontSize: '16px', // 调整段落文字大小
-        textAlign: 'left'
+        textAlign: 'center'
     };
 
     const imgContainerStyle = {
@@ -44,6 +44,7 @@ export default function Card({ title, paragraph, images, avatarSrc }) {
         borderRadius: '50%', // 头像圆形
         marginRight: '20px', // 头像与标题之间的间距
         objectFit: 'cover', // 保持头像比例
+        float: 'left'
     };
 
     return (
@@ -61,7 +62,7 @@ export default function Card({ title, paragraph, images, avatarSrc }) {
 
             <div className="h-8"></div>
 
-            <div className="card-body">
+            <div className="card-body text-left">
                 <div style={{display: 'flex', alignItems: 'center'}}>
                     <img
                         src={avatarSrc}
@@ -70,15 +71,13 @@ export default function Card({ title, paragraph, images, avatarSrc }) {
                     />
                     <h2 style={titleStyle} className="card-title text-pink-400">{title}</h2>
                 </div>
-                <div className="h-4"></div>
-                <p style={paragraphStyle}>{paragraph}</p>
-                <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Buy Now</button>
-                </div>
+                <div>{uname}</div>
             </div>
+            <div className="h-4"></div>
+            <p style={paragraphStyle}>{paragraph}</p>
             <div className="h-8"></div>
             <svg width="2000" height="200">
-                <line x1="550" y1="10" x2="1450" y2="10" stroke="black" strokeWidth="2"/>
+                <line x1="50" y1="10" x2="900" y2="10" stroke="black" strokeWidth="2"/>
             </svg>
         </div>
     );

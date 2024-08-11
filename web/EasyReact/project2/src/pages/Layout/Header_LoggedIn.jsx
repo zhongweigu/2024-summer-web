@@ -54,7 +54,7 @@ export default function Header() {
                                 src={avatar}
                                 className="bg-auto rounded-full w-12 h-12"
                             />
-                            {nickname}({uid})
+                            {nickname}
                         </div>
                     </div>
                 </a>
