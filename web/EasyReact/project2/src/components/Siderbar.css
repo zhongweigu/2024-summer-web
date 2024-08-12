@@ -1,0 +1,21 @@
+.sidebar {
+    width: 80px;
+    background-color: white;
+    color: #FF74A1;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    white-space: nowrap;
+}
+
+

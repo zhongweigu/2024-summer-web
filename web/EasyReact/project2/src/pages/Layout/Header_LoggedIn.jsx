@@ -37,15 +37,7 @@ export default function Header() {
                         <Bars3Icon aria-hidden="true" className="h-6 w-6"/>
                     </button>
                 </div>
-                <PopoverGroup className="hidden lg:flex lg:gap-x-12">
 
-                    <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-                        旅游
-                    </a>
-                    <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-                        游戏
-                    </a>
-                </PopoverGroup>
                 <a href="#" className="hidden lg:flex lg:flex-1 lg:justify-end">
                     <div className="avatar">
                         <div className="w-20 rounded-full">

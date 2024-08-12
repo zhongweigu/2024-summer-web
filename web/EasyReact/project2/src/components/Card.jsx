@@ -4,7 +4,7 @@ import { openDB } from 'idb';
 import { useEffect, useState } from 'react';
 import CommentList from "./comment.jsx";
 
-export default function Card({uname, title, paragraph, images, avatarSrc }) {
+export default function Card({uname, title, paragraph, images, avatarSrc, tag}) {
 
     const [imageSrcs, setImageSrcs] = useState([]);
 
@@ -67,6 +67,11 @@ export default function Card({uname, title, paragraph, images, avatarSrc }) {
 
     return (
         <div style={cardStyle} className="card bg-white shadow-xl">
+            <span
+                className="inline-flex items-center rounded-md bg-pink-50 px-2 py-1 text-xs font-medium text-pink-700 ring-1 ring-inset ring-pink-700/10"
+            >
+                {tag}
+            </span>
             <div style={imgContainerStyle}>
                 {images.map((imageSrc, index) => (
                     <img

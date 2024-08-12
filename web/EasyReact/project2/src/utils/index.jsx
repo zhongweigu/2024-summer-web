@@ -7,6 +7,7 @@ const AuthContext = createContext({
     uid: null,
     nickname: '',
     avatar: '',
+    active: 0,
     login: () => {},
     logout: () => {}
 });
@@ -19,7 +20,8 @@ export function AuthProvider({ children }) {
         isLoggedIn: false,
         uid: null,
         nickname: '',
-        avatar: ''
+        avatar: '',
+        active: 0
     });
 
     // 从localStorage恢复状态
@@ -36,7 +38,8 @@ export function AuthProvider({ children }) {
             isLoggedIn: true,
             uid,
             nickname,
-            avatar
+            avatar,
+            active: 0
         };
         setAuthState(newState);
         // 将状态保存到localStorage
@@ -49,7 +52,8 @@ export function AuthProvider({ children }) {
             isLoggedIn: false,
             uid: null,
             nickname: '',
-            avatar: ''
+            avatar: '',
+            active: 0
         };
         setAuthState(newState);
         // 清除localStorage中的状态

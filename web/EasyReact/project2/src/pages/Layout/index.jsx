@@ -2,6 +2,7 @@ import Header from "./Header_LoggedIn.jsx";
 import Card from "../../components/Card.jsx";
 import {useAuth} from "../../utils/index.jsx";
 import FloatingButton from "../../components/FloatingButton.jsx";
+import Sidebar from "../../components/Siderbar.jsx";
 
 
 // 初始化本地存储中的 cardData
@@ -15,7 +16,7 @@ const initializeCardData = () => {
 // 初始化本地存储中的 cardData
 const Layout = () => {
 
-    const { isLoggedIn, uid, nickname, avatar } = useAuth();
+    const { isLoggedIn, uid, nickname, avatar, active } = useAuth();
     // const [cardData, setCardData] = useState(initializeCardData());
 
 
@@ -24,6 +25,7 @@ const Layout = () => {
         console.log("uid: " ,uid)
         console.log("nickname: " ,nickname)
         console.log("avatar: " ,avatar)
+        console.log("active: ",active)
     }
 
     const listStyle = {
@@ -38,6 +40,8 @@ const Layout = () => {
     return (
         <>
             <Header/>
+            <Sidebar/>
+
 
             {checkLogin()}
             {console.log(JSON.parse(localStorage.getItem('users')))}
@@ -55,6 +59,7 @@ const Layout = () => {
                         paragraph={data.paragraph}
                         images={data.images}
                         avatarSrc={data.avatarSrc}
+                        tag={data.tag}
                     />
                 ))}
             </div>

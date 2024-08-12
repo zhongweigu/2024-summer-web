@@ -34,11 +34,11 @@ export default function Index() {
             // 假设登录成功后，从localStorage中获取用户信息
             const userInfo = JSON.parse(localStorage.getItem(email)) || {};
             console.log(userInfo);
-            const { uid, nickname, avatar } = userInfo;
-            console.log(uid, nickname, avatar);
+            const { uid, nickname, avatar, active } = userInfo;
+            console.log(uid, nickname, avatar, active);
             // 更新context中的状态
             login(uid, nickname, avatar);
-            localStorage.setItem('authState', JSON.stringify({ isLoggedIn: true, uid, nickname, avatar }));
+            localStorage.setItem('authState', JSON.stringify({ isLoggedIn: true, uid, nickname, avatar, active }));
             // 跳转到主页
             window.location.href = '/home';
         } else {

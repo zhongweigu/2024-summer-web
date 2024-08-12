@@ -50,7 +50,8 @@ export default function RegisterPage() {
             uid,
             password,
             nickname,
-            avatar: '../../../public/defaultAvatar.jpg' // 假设这是默认头像的路径
+            avatar: '../../../public/defaultAvatar.jpg', // 假设这是默认头像的路径
+            active: 0
         };
         localStorage.setItem(email, JSON.stringify(newUser)); // 保存单个用户信息
         // 更新已注册用户列表
