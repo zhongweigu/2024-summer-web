@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 import { openDB } from 'idb';
 import { useEffect, useState } from 'react';
+import CommentList from "./comment.jsx";
 
 export default function Card({uname, title, paragraph, images, avatarSrc }) {
 
@@ -93,8 +94,12 @@ export default function Card({uname, title, paragraph, images, avatarSrc }) {
             <div className="h-4"></div>
             <p style={paragraphStyle}>{paragraph}</p>
             <div className="h-8"></div>
-            <svg width="2000" height="200">
-                <line x1="50" y1="10" x2="900" y2="10" stroke="black" strokeWidth="2"/>
+            <svg width="2000" height="30">
+                <line x1="100" y1="10" x2="850" y2="10" stroke="black" strokeWidth="2"/>
+            </svg>
+            <CommentList/>
+            <svg width="2000" height="100">
+                <line x1="25" y1="10" x2="925" y2="10" stroke="black" strokeWidth="2"/>
             </svg>
         </div>
     );

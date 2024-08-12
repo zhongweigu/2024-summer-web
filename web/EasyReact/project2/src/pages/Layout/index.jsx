@@ -3,25 +3,6 @@ import Card from "../../components/Card.jsx";
 import {useAuth} from "../../utils/index.jsx";
 import FloatingButton from "../../components/FloatingButton.jsx";
 
-// const cardData = [
-//     {
-//         rpid: 1,
-//         title: "Shoes!",
-//         paragraph: "If a dog chews shoes whose shoes does he choose?",
-//         images: [
-//             "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-//             "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-//             "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-//             "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-//             "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-//             "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-//             // ... 更多图片URLs
-//         ],
-//         avatarSrc: "https://via.placeholder.com/50" // 示例头像URL
-//     },
-//     // ... 更多卡片数据
-// ];
-
 
 // 初始化本地存储中的 cardData
 const initializeCardData = () => {
