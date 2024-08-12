@@ -1,7 +1,29 @@
 
 import PropTypes from 'prop-types';
+import { openDB } from 'idb';
+import { useEffect, useState } from 'react';
 
 export default function Card({uname, title, paragraph, images, avatarSrc }) {
+
+    const [imageSrcs, setImageSrcs] = useState([]);
+
+    useEffect(() => {
+        const fetchImages = async () => {
+            const urls = [];
+            for (const id of images) {
+                const db = await openDB('imageStore', 1);
+                const store = db.transaction('images').objectStore('images');
+                const file = await store.get(id);
+                if (file) {
+                    urls.push(URL.createObjectURL(file));
+                }
+            }
+            setImageSrcs(urls);
+        };
+        fetchImages();
+    }, [images]);
+
+
     const cardStyle = {
         width: '100%',
         maxWidth: '1000px', // 限制最大宽度
@@ -17,12 +39,10 @@ export default function Card({uname, title, paragraph, images, avatarSrc }) {
         fontSize: '30px', // 调整标题文字大小
         textAlign: 'left',
     };
-
     const paragraphStyle = {
         fontSize: '16px', // 调整段落文字大小
         textAlign: 'center'
     };
-
     const imgContainerStyle = {
         display: 'flex',
         flexWrap: 'wrap', // 允许图片在必要时换行
@@ -30,14 +50,11 @@ export default function Card({uname, title, paragraph, images, avatarSrc }) {
         gap: '30px', // 图片之间的间隔
         padding: '50px'
     };
-
     const imgStyle = {
-        maxWidth: 'calc(33.33% - 30px)', // 假设一行显示三张图片，减去间隔
+        maxWidth: 'calc(100% - 30px)',
         height: 'auto',
         objectFit: 'cover',
     };
-
-
     const avatarStyle = {
         width: '50px', // 头像宽度
         height: '50px', // 头像高度
@@ -53,7 +70,7 @@ export default function Card({uname, title, paragraph, images, avatarSrc }) {
                 {images.map((imageSrc, index) => (
                     <img
                         key={index}
-                        src={imageSrc}
+                        src={imageSrcs}
                         alt={`Image ${index}`}
                         style={imgStyle}
                     />
@@ -84,6 +101,7 @@ export default function Card({uname, title, paragraph, images, avatarSrc }) {
 }
 
 Card.propTypes = {
+    uname: PropTypes.string,
     title: PropTypes.string.isRequired,
     paragraph: PropTypes.string,
     images: PropTypes.arrayOf(PropTypes.string),

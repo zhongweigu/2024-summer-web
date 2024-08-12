@@ -40,10 +40,10 @@ export default function Header() {
                 <PopoverGroup className="hidden lg:flex lg:gap-x-12">
 
                     <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-                        Marketplace
+                        旅游
                     </a>
                     <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-                        Company
+                        游戏
                     </a>
                 </PopoverGroup>
                 <a href="#" className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -96,18 +96,6 @@ export default function Header() {
                     <div className="mt-6 flow-root">
                         <div className="-my-6 divide-y divide-gray-500/10">
                             <div className="space-y-2 py-6">
-                                <a
-                                    href="#"
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                                >
-                                    Products
-                                </a>
-                                <a
-                                    href="#"
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                                >
-                                    Features
-                                </a>
                                 <a
                                     href="#"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"

@@ -48,7 +48,6 @@ export default function Release() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('提交表单数据:', title, paragraph);
 
         const rpid = Math.random().toString(36).substring(2, 15);
 
@@ -67,6 +66,8 @@ export default function Release() {
         localStorage.setItem('cardData', JSON.stringify(data));
 
         console.log('cardData:', data);
+
+        window.location.href = '/home';
     };
 
     return (
@@ -151,7 +152,6 @@ export default function Release() {
                             type="file"
                             className="file-input w-full max-w-xs"
                             accept="image/*"
-                            multiple
                             onChange={handleImageChange}
                         />
                     </div>
