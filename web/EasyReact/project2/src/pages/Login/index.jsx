@@ -54,7 +54,7 @@ export default function Index() {
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <img
                         alt="Your Company"
-                        src="../../../public/Logo.bmp"
+                        src="/Logo.bmp"
                         className="mx-auto h-13 w-1/5"
                     />
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">

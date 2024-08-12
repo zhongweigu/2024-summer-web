@@ -66,7 +66,7 @@ const CommentList = () => {
                     {/* 当前用户头像 */}
                     <div className="reply-box-avatar">
                         <div className="bili-avatar">
-                            <img className="bili-avatar-img" src={avatar} alt="用户头像" />
+                            <img className="bili-avatar-img" src="/defaultAvatar.jpg" alt="用户头像" />
                         </div>
                     </div>
                     <div className="reply-box-wrap">
@@ -94,7 +94,7 @@ const CommentList = () => {
                                     <img
                                         className="bili-avatar-img"
                                         alt=""
-                                        src={item.user.avatar}
+                                        src="/defaultAvatar.jpg"
                                     />
                                 </div>
                             </div>

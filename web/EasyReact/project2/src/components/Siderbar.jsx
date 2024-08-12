@@ -48,7 +48,7 @@ const Sidebar = () => {
 
             {sortedUsers.map((user) => (
                 <li key={user.uid}>
-                    <img src={user.avatar} alt={`Avatar of ${user.nickname}`} width="50" height="50" />
+                    <img src="/defaultAvatar.jpg" alt={`Avatar of ${user.nickname}`} width="50" height="50" />
                     <span>{user.nickname}</span>
                 </li>
             ))}

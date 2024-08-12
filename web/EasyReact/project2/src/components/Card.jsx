@@ -88,7 +88,7 @@ export default function Card({uname, title, paragraph, images, avatarSrc, tag}) 
             <div className="card-body text-left">
                 <div style={{display: 'flex', alignItems: 'center'}}>
                     <img
-                        src={avatarSrc}
+                        src="/defaultAvatar.jpg"
                         alt="Avatar"
                         style={avatarStyle}
                     />

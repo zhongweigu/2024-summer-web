@@ -4,7 +4,6 @@ import {useState} from 'react'
 import {
     Dialog,
     DialogPanel,
-    PopoverGroup,
 } from '@headlessui/react'
 import {
     Bars3Icon,
@@ -24,7 +23,7 @@ export default function Header() {
         <header className="bg-white">
             <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
                 <div className="flex lg:flex-1">
-                    <img alt="" src="../../../public/Logo.bmp"
+                    <img alt="" src="/Logo.bmp"
                          className="h-12 w-12"/>
                 </div>
                 <div className="flex lg:hidden">
@@ -43,7 +42,7 @@ export default function Header() {
                         <div className="w-20 rounded-full">
                             <img
                                 alt="Avatar"
-                                src={avatar}
+                                src="/defaultAvatar.jpg"
                                 className="bg-auto rounded-full w-12 h-12"
                             />
                             {nickname}

@@ -16,7 +16,7 @@ export default function Example() {
                     <div className="flex lg:flex-1">
                         <img
                             alt="logo"
-                            src="../../public/Logo.bmp"
+                            src="/Logo.bmp"
                             className="h-12 w-12"
                         />
                     </div>

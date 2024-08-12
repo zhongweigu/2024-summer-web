@@ -50,7 +50,7 @@ export default function RegisterPage() {
             uid,
             password,
             nickname,
-            avatar: '../../../public/defaultAvatar.jpg', // 假设这是默认头像的路径
+            avatar: '/defaultAvatar', // 假设这是默认头像的路径
             active: 0
         };
         localStorage.setItem(email, JSON.stringify(newUser)); // 保存单个用户信息
@@ -60,7 +60,7 @@ export default function RegisterPage() {
         localStorage.setItem('users', JSON.stringify(registeredUsers));
 
         // 更新context中的状态
-        login(uid, nickname, '../../../public/defaultAvatar.jpg');
+        login(uid, nickname, '/defaultAvatar.jpg');
 
         // 注册成功后，显示成功消息并跳转到登录页面
         setSuccessMessage('注册成功, 2秒后跳转到登录页面');
